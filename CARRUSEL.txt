@@ -1,0 +1,18 @@
+<p:carousel value="#{autosManagedBean.autos}" headerText="Basic" var="car" itemStyleClass="carItem">
+            <h:panelGrid columns="2" style="width:100%" cellpadding="30" columnClasses="label,value">
+                <f:facet name="header">
+                    <p:graphicImage library="default" name="cars/#{car.imagen}.jpg"/> 
+                </f:facet>
+
+                <h:outputText value="Id:" />
+                <h:outputText value="#{car.nombre}" />
+
+                <h:outputText value="Year" />
+                <h:outputText value="#{car.marca}" />
+
+                <h:outputText value="Price" />
+                <h:outputText value="$#{car.nombre}" />
+            </h:panelGrid>
+ 
+        
+        </p:carousel>
