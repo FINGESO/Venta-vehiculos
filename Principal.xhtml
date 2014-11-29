@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+       
+        <h:form>
+    <p:growl id="msgs" showDetail="true" />
+ 
+</h:form>
+    <p:fieldset rendered="true" style="background:#BBDEFB" >
+        <h:panelGrid  columns="2" bgcolor="#BBDEFB" style="width: 100% " >
+            <p:graphicImage library="default" name="images/gato.jpg" />
+      
+            <!--<div align="center">HOLA QUERO VENDER MI AUTO :3 </div>-->
+            <font face="impact" SIZE="7" COLOR="GREEN"> Tienda Automovil  </font>
+                    </h:panelGrid>
+   
+        <div  align="right">
+        <p:link   outcome="VenderMiAutoCliente" value="Vender mi auto">
+    <f:param name="productId" value="10" />
+</p:link>
+        </div>
+    </p:fieldset>
+    
+    
+    <h:panelGrid columns="2"  style="width: 100%">
+        <p:fieldset style="background: #FF5722">
+               BUSCADOR
+            
+        </p:fieldset>    
+     
+        
+         <p:fieldset  style="background: #B0BEC5; height: 100%">
+            
+             <p:carousel value="#{VehiculoManagedBean.autos}" headerText="Categoria" var="car" itemStyleClass="carItem">
+            <h:panelGrid columns="2" style="width:100%" cellpadding="30" columnClasses="label,value">
+                <f:facet name="header">
+                    <p:graphicImage library="default" name="images/gato.jpg"/> 
+                </f:facet>
+
+                <h:outputText value="Id:" />
+                <h:outputText value="#{car.nombre}" />
+
+                <h:outputText value="Year" />
+                <h:outputText value="#{car.marca}" />
+
+                <h:outputText value="Price" />
+                <h:outputText value="$#{car.nombre}" />
+            </h:panelGrid>
+ 
+        
+        </p:carousel>
+             
+            
+        </p:fieldset>   
+       
+    </h:panelGrid>
+    
+    
+       <p:carousel value="#{VehiculoManagedBean.autos}" headerText="Categoria" var="car">
+            <h:panelGrid columns="2" style="width:100%" cellpadding="3">
+                <f:facet name="header">
+                    <p:graphicImage library="default" name="images/gato.jpg"/> 
+                </f:facet>
+
+                <h:outputText value="Id:" />
+                <h:outputText value="#{car.nombre}" />
+
+                <h:outputText value="Year" />
+                <h:outputText value="#{car.marca}" />
+
+                <h:outputText value="Price" />
+                <h:outputText value="$#{car.nombre}" />
+            </h:panelGrid>
+ 
+        
+        </p:carousel>
+          
+    
+        
+    </h:body>
+</html>
+
