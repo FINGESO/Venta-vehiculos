@@ -31,5 +31,7 @@ public interface VendedorFacadeLocal {
     int count();
 
     Boolean crearVendedor(String nombre, String rut);
+
+    List listarVendedores();
     
 }

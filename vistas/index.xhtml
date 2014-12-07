@@ -10,12 +10,21 @@
     </h:head>
     <h:body>
         <h:form>
-            <div align="center" style=" vertical-align: central; height: 100%">
-            <p:commandButton action="plantilla?faces-redirect=true" value="Home"></p:commandButton>
-            <br />
-            <p:commandButton action="autentificar?faces-redirect=true" value="Login empleados"></p:commandButton>
-            <br />
-            <p:commandButton action="creargerente?faces-redirect=true" value="Crear Gerente default"></p:commandButton>
+            <div style="position: relative; height: 100%;" align="center">
+                <h:panelGrid columns="2" style="white-space: nowrap">
+               
+                    <p:commandButton style=" margin: 10px; width: 100%" action="plantilla?faces-redirect=true" value="Home"></p:commandButton>
+               
+                    <p:commandButton style=" margin: 10px; width: 100%" action="autentificar?faces-redirect=true" value="Login empleados"></p:commandButton>
+                
+                    <p:commandButton style=" margin: 10px; width: 100%" action="creargerente?faces-redirect=true" value="Crear Gerente default"></p:commandButton>
+                
+                    <p:commandButton style=" margin: 10px; width: 100%" action="homeGerente?nombre=Juan+Perez&amp;faces-redirect=true" value="Home Gerente">
+                        <f:param name="nombre" value="Juan Perez" />
+                    </p:commandButton>
+                
+                </h:panelGrid>
+
             </div>
         </h:form>
     </h:body>

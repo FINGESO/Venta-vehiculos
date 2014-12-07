@@ -6,6 +6,7 @@
 package managedbeans;
 
 import entityclases.Gerente;
+import java.lang.ProcessBuilder.Redirect;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -49,12 +50,12 @@ public class AutentificarManagedBean {
         
     }
     
-    public void autentificar(){
+    public String autentificar(){
         String m = "";
         try{
             Gerente g = this.gerenteFacade.getGerente(email);
             if(g.getPass().equalsIgnoreCase(pass)){
-                m = "Contraseña Correcta!!! ";
+                return "homeGerente?nombre="+g.getNombre()+"&amp;faces-redirect=true";
             }else{
                 m = "Contraseña no coincide ";
             }
@@ -68,13 +69,7 @@ public class AutentificarManagedBean {
         
             RequestContext.getCurrentInstance().showMessageInDialog(msg);
         }
-        
-        
-//        FacesContext context = FacesContext.getCurrentInstance();
-//        FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO,
-//                    "Cliente", ""+email+" | "+pass);
-//        context.addMessage(null, mensaje);
-        
+        return "";
     }
     
     public void creargerente(){

@@ -6,8 +6,11 @@
 package sessionbeans;
 
 import entityclases.Vendedor;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
 
 /**
@@ -28,7 +31,7 @@ public class VendedorFacade extends AbstractFacade<Vendedor> implements Vendedor
     public VendedorFacade() {
         super(Vendedor.class);
     }
-
+    
     @Override
     public Boolean crearVendedor(String nombre, String rut) {
         System.out.println("Creando Vendedor");
@@ -43,6 +46,22 @@ public class VendedorFacade extends AbstractFacade<Vendedor> implements Vendedor
             return false;
         }
         
+    }
+
+    @Override
+    public List<Vendedor> listarVendedores() {
+        List<Vendedor> ven=null;
+        try{
+            ven = (getEntityManager().createQuery("SELECT c FROM Vendedor c ")
+                    .getResultList());
+            System.out.println("lista size: "+ven.size());
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }catch (NoResultException e){
+            System.out.println("No se encontró nada");
+            return null;
+        }
+        return ven;
     }
     
 }

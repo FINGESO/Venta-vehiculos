@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Home</title>
+    </h:head>
+    <h:body>
+        <h:form id="forma">
+        
+        <p:panelGrid columns="2" style="">
+            <f:facet name="header">
+                <p:commandButton action="index?faces-redirect=true" style=" width: 100%" value="Home"/>
+            </f:facet>
+            <p:outputLabel value="Bienvenido"/>
+            <p:outputLabel value="#{administrarVendedoresManagedBean.gerenteNombre}"/>
+        </p:panelGrid>
+        <h1>Gerente Home</h1>
+        <p:tabView orientation="left" id="tabsview">
+        <p:tab title="Datos Personales">
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:outputText value="After a break of more than 15 years..." />
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Administrar Vendedores">
+            <p:panelGrid columns="2" style="width: 100%">
+                <f:facet name="header">
+                    <label>Vendedores</label>
+                </f:facet>
+            </p:panelGrid>
+            <p:dataTable var="ven" value="#{administrarVendedoresManagedBean.vendedores}" id="tabla">
+                <p:column headerText="Nombre" style="text-align: center">
+                    <h:outputText value="#{ven.nombre}" />
+                </p:column>
+
+                <p:column headerText="Rut" style="text-align: center">
+                    <h:outputText value="#{ven.rut}" />
+                </p:column>
+
+                <p:column headerText="Id" style="text-align: center">
+                    <h:outputText value="#{ven.id}" />
+                </p:column>
+            </p:dataTable>
+            <p:panelGrid columns="2" style="width: 100%">
+                <f:facet name="header">
+                    <p:commandButton value="Agregar" 
+                                     action="#{administrarVendedoresManagedBean.dialogNuevo()}" />
+                </f:facet>
+            </p:panelGrid>
+        </p:tab>
+        
+        <p:tab title="Ingresar Vehiculos">
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:outputText value="Vista por implementar" />
+            </h:panelGrid>
+        </p:tab>
+        
+    </p:tabView>
+            <p:dialog header="Nuevo Vendedor" widgetVar="nuevoVendedor" modal="true" height="100">
+                
+                <p:panelGrid columns="2" >
+                Nombre
+                <p:inputText
+                    id="input"
+                    value="#{administrarVendedoresManagedBean.nombre}"
+                    />
+                Rut
+                <p:inputText
+                    id="inputt"
+                    value="#{administrarVendedoresManagedBean.rut}"
+                />
+            <f:facet name="footer" >
+                <div align="center">
+                <p:commandButton 
+                    value="Agregar"
+                    action="#{administrarVendedoresManagedBean.nuevoVendedor()}"
+                    update="forma:tabsview:tabla"
+                    >
+                <p:resetInput target="forma:tabsview:tabla"></p:resetInput>
+                </p:commandButton>
+                </div>
+                
+            </f:facet>
+            
+            </p:panelGrid>
+                <h:outputText value="This is a Modal Dialog." />
+            </p:dialog>
+        </h:form>
+    </h:body>
+</html>
+

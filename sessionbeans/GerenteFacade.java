@@ -56,8 +56,8 @@ public class GerenteFacade extends AbstractFacade<Gerente> implements GerenteFac
         
         System.out.println("Creando Vendedor");
         Gerente v = new Gerente();
-        v.setCorreo("luis@venta.cl");
-        v.setNombre("Luis");
+        v.setCorreo("juanp@venta.cl");
+        v.setNombre("Juan Perez");
         v.setPass("1234");
         v.setRut("9548652-4");
         try{
