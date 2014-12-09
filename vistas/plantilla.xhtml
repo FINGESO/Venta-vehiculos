@@ -8,76 +8,49 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="./css/default.css"/>
-        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <h:outputStylesheet library="default" name="css/default.css"/>
+        <h:outputStylesheet library="default" name="css/cssLayout.css"/>
         <title>Facelets Template</title>
     </h:head>
 
     <h:body>
-
-        <div id="top">
-            <ui:insert name="top"></ui:insert>
-            <p:button>login</p:button><p:button>login</p:button><p:button>login</p:button>
-        </div>
-        <div>
-            
-            
-            
-            <div id="left">
-                <ui:insert name="left">Left</ui:insert>
-                
-                
-                
- https://github.com/FINGESO/Venta-vehiculos.git
-    
-                
+        <h:form>
+        <h:panelGrid columns="1" cellpadding="5">
+            <p:graphicImage library="default" name="img/banner.jpg" />
+            <div>
+                <h2>Venta de Autos Online</h2>
             </div>
-            
-            
-            
-            
-            <div id="content" class="left_content">
-                <ui:insert name="content">Content</ui:insert>
-                <h:form>
-        <p:fieldset style="margin-bottom:20px">
-            <h:panelGrid columns="1" cellpadding="5">
-                <p:graphicImage library="default" name="img/banner.jpg" />
-                <div><h2>Venta de Autos Online</h2>
-</div>
-            </h:panelGrid>
-        </p:fieldset>
-         
-        <p:link outcome="index" value="Agregar Vendedor">
-        <f:param name="productId" value="10" />
-        </p:link>
-          <!--Carrusel-->  
-          <p:carousel value="#{autosManagedBean.autos}" headerText="Basic" var="car" itemStyleClass="carItem" >
-            <h:panelGrid columns="2" style="width:100%" cellpadding="20" columnClasses="label,value">
-                <f:facet name="header">
-                    <p:graphicImage library="default" name="cars/#{car.imagen}.jpg"/> 
-                </f:facet>
+        </h:panelGrid>
+        <p:dataGrid var="car" value="#{ catalogoManagedBean.autos}" columns="3"
+            rows="12" paginator="true" id="cars"
+            paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+            rowsPerPageTemplate="6,12,16">
+           <f:facet name="header">
+                Autos a la venta
+            </f:facet>
 
-                <h:outputText value="Id:" />
-                <h:outputText value="#{car.nombre}" />
+            <p:panelGrid columns="2" columnClasses="label,value">
 
-                <h:outputText value="Year" />
-                <h:outputText value="#{car.marca}" />
+            <f:facet name="header">
+                <p:graphicImage library="default" name="img/#{car.imagen}"/> 
+            </f:facet>
 
-                <h:outputText value="Price" />
-                <h:outputText value="$#{car.nombre}" />
-            </h:panelGrid>
- 
-        
-        </p:carousel>
-            
-        </h:form>
-        
-            </div>
-        </div>
+            <h:outputText value="Modelo:" />
+            <h:outputText value="#{car.modelo}" />
+
+            <h:outputText value="Año" />
+            <h:outputText value="#{car.año}" />
+
+            <h:outputText value="Marca" />
+            <h:outputText value="#{car.marca}" />
+
+            <h:outputText value="Precio" />
+            <h:outputText value="$#{car.precio}" />
+        </p:panelGrid>
+        </p:dataGrid>
+    </h:form>              
         <div id="bottom">
-            <ui:insert name="bottom">Bottom</ui:insert>
-           
-            
+            <h:graphicImage library="default" name="img/abajo.jpg" styleClass = "lockedImage"  />
         </div>
 
     </h:body>
